@@ -11,8 +11,23 @@
     <ul>
         {% for ser in seres %}
 
-            <li>{{ser.first_name}}</li>
-        {%endfor%}
+            <li>
+                <form action="{% url 'person_update' ser.id %}">
+                    <button type="submit">{{ser.first_name}}</button>
+                </form>
+                <form action="{% url 'person_delete' ser.id %}">
+                    <button type="submit">Deletar</button>
+                </form>
+                <br>
+            </li>
+
+        {% endfor %}
     </ul>
+
+    <br>
+    <form action="{% url 'person_new' %}">
+        <button type="submit">Novo Ser</button>
+    </form>
+
 </body>
 </html>
