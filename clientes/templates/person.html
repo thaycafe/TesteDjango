@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block title %} Seres {% endblock %}
+
+{% block main %}
+    <form action="{% url 'my_logout' %}">
+        <button type="submit" class="btn btn-dark">Logout</button>
+        <br>
+        <br>
+    </form>
+    <ul>
+        {% for ser in seres %}
+
+            <li>
+                <form action="{% url 'person_update' ser.id %}">
+                    <button type="submit"  class="btn btn-light">{{ser.first_name}}</button>
+                </form>
+                <form action="{% url 'person_delete' ser.id %}">
+                    <button type="submit" class="btn btn-danger">Deletar</button>
+                </form>
+                <br>
+            </li>
+
+        {% endfor %}
+    </ul>
+
+    <br>
+    <form action="{% url 'person_new' %}">
+        <button type="submit" class="btn btn-info">Novo Ser</button>
+    </form>
+
+{% endblock %}

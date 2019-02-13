@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block link %} <link rel="stylesheet" href="{% static 'css/home.css' %}"> {% endblock %}
+{% block title %} Homee {% endblock %}
+
+{% block main %}
+    <div class="container h-75 w-50">
+
+        <div class="row align-items-center justify-content-md-center h-75 w-50">
+            <div class="col col-lg-2">
+                <h1 class="w-25">Olá</h1>
+            </div>
+            <div class="col">
+                {% if user.is_authenticated %}
+                <h4 class="font-weight-bold"> <span class="badge badge-light">{{user.username}}</span></h4>
+            </div>
+
+        </div>
+        <div class="row align-items-center position-relative">
+            <a href="{% url 'my_logout' %}" class="btn btn-dark"> Logout </a>
+            <a href="{% url 'person_list' %}" class="btn btn-info"> Seres </a>
+            {% else %}
+            <a href="{% url 'login' %}" class="btn btn-primary"> Login </a>
+            {% endif %}
+        </div>
+     </div>
+
+
+{% endblock %}

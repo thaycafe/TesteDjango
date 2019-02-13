@@ -1,4 +1,4 @@
-"""teste URL Configuration
+"""AppFinal URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/2.1/topics/http/urls/
@@ -15,15 +15,16 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from .views import Hello
-from .views import articles
-from .views import pessoas
-from clientes import urls as clients_urls
+from django.conf import settings
+from django.conf.urls.static import static
+from clientes import urls as clientes_urls
+from django.contrib.auth import views as auth_views
+from home import urls as home_urls
 
 urlpatterns = [
-    path('hello/', Hello),
-    path('articles/<int:year>/', articles),
-    path('pessoa/<str:nome>/', pessoas),
+    path('', include(home_urls)),
+    path('clientes/', include(clientes_urls)),
+    path('login/', auth_views.LoginView.as_view(), name='login'),
     path('admin/', admin.site.urls),
-    path('person/', include(clients_urls))
-]
+
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

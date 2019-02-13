@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block title %} Login {% endblock %}
+
+{% block main %}
+    <div class="row align-items-center h-100">
+         <div class="col">
+            <div class="card  mb-3 text-center mx-auto" style="max-width: 24rem;">
+                <div class="card-header">
+                    <h2>Login</h2>
+                </div>
+                <div class="card-body">
+                    <form method="post" class="form-group">
+                        {% csrf_token %}
+                        {{form.as_p}}
+                        <button type="submit" class="btn btn-primary">Login</button>
+                    </form>
+                </div>
+            </div>
+         </div>
+    </div>
+
+{% endblock %}
+
+{% block footer %}
+    <footer class="footer">
+        <div class="container">
+            <span class="text-muted"> Desenvolvimento web com Django 2.x</span>
+        </div>
+    </footer>
+{% endblock %}
