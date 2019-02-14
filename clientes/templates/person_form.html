@@ -4,20 +4,30 @@
 {% block title %} Ser {% endblock %}
 
 {% block main %}
-    {% if acao == 'delete' %}
-        <h2>Tem certeza que deseja deletar o ser abaixo? </h2>
-        <form method="POST" enctype="multipart/form-data">
-            {% csrf_token %}
-            {{form | bootstrap}}
-            <button type="submit" class="btn btn-danger"> Delete </button>
-        </form>
-    {% else %}
-        <form method="POST" enctype="multipart/form-data">
-        {% csrf_token %}
-        {{form | bootstrap}}
-        <button type="submit" class="btn btn-success"> Salvar </button>
-        </form>
-    {% endif %}
+    <div class="container-fluid">
+        <div class="card mx-auto" style="width:90%;">
+            <div class="card-header">
+                <h2>Ser</h2>
+            </div>
+            <div class="card-body">
+                {% if acao == 'delete' %}
+                    <h2>Tem certeza que deseja deletar o ser abaixo? </h2>
+                    <form method="POST" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        {{form | bootstrap}}
+                        <button type="submit" class="btn btn-danger"> Delete </button>
+                    </form>
+                {% else %}
+                    <form method="POST" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        {{form | bootstrap}}
+                        <button type="submit" class="btn btn-success"> Salvar </button>
+                    </form>
+                {% endif %}
+             </div>
 
+        </div>
+
+    </div>
 
 {% endblock %}

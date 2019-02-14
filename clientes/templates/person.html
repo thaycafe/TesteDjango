@@ -3,30 +3,35 @@
 {% block title %} Seres {% endblock %}
 
 {% block main %}
-    <form action="{% url 'my_logout' %}">
-        <button type="submit" class="btn btn-dark">Logout</button>
-        <br>
-        <br>
-    </form>
-    <ul>
-        {% for ser in seres %}
 
-            <li>
-                <form action="{% url 'person_update' ser.id %}">
-                    <button type="submit"  class="btn btn-light">{{ser.first_name}}</button>
-                </form>
-                <form action="{% url 'person_delete' ser.id %}">
-                    <button type="submit" class="btn btn-danger">Deletar</button>
-                </form>
-                <br>
-            </li>
+    <div class="card w-100 h-100">
+        <div class="card-header" style="background-color:#ff9933;">
+            <div class="row">
+                <div class="col">
+                <a href="{% url 'my_logout' %}" class=" btn btn-sm btn-dark">Logout <span class="badge badge-light">{{user.username}}</span></a>
+                </div>
+                <div class="d-flex flex-column-reverse">
+                    <a href="{% url 'person_new' %}" class="btn btn-sm btn-primary">Novo Ser</a>
+                </div>
+            </div>
 
-        {% endfor %}
-    </ul>
+        </div>
+        <div class="card-body">
+            <h3 class=" text-muted font-weight-bold">Seres</h3> <br>
+            <ul class="list-group">
+                {% for ser in seres %}
 
-    <br>
-    <form action="{% url 'person_new' %}">
-        <button type="submit" class="btn btn-info">Novo Ser</button>
-    </form>
+
+                    <li class="list-group-item">
+                        <a href="{% url 'person_update' ser.id %}"  class="btn btn-light">{{ser.first_name}}</a>
+                        <a href="{% url 'person_delete' ser.id %}"><i class="fa fa-trash"></i></a>
+
+                        <br>
+                    </li>
+
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
 
 {% endblock %}
