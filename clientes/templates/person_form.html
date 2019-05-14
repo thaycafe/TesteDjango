@@ -1,5 +1,4 @@
 {% extends 'base.html' %}
-{% load bootstrap %}
 
 {% block title %} Ser {% endblock %}
 
@@ -14,13 +13,13 @@
                     <h2>Tem certeza que deseja deletar o ser abaixo? </h2>
                     <form method="POST" enctype="multipart/form-data">
                         {% csrf_token %}
-                        {{form | bootstrap}}
+                        {{form }}
                         <button type="submit" class="btn btn-danger"> Delete </button>
                     </form>
                 {% else %}
                     <form method="POST" enctype="multipart/form-data">
                         {% csrf_token %}
-                        {{form | bootstrap}}
+                        {{form}}
                         <button type="submit" class="btn btn-success"> Salvar </button>
                     </form>
                 {% endif %}

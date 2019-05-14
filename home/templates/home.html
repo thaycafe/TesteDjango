@@ -7,28 +7,27 @@
 {% block main %}
     <div class="containerhome">
 
-        <div class="row align-items-center">
-            <div class="col">
-                <h1 class="w-25">Olá</h1>
-            </div>
-            <div class="col">
-                {% if user.is_authenticated %}
-                <h5 class="font-weight-bold"> <span class="badge badge-light">{{user.username}}</span></h5>
-            </div>
-
+      <div class="row align-items-center">
+          <div class="col">
+            <h1 class="w-25">Olá</h1>
+          </div>
+          <div class="col">
+            {% if user.is_authenticated %}
+            <h5 class="font-weight-bold"> <span class="badge badge-light">{{user.username}}</span></h5>
+          </div>
+      </div>
+      <div class="row">
+        <div class="col-">
+          <a href="{% url 'my_logout' %}" class="btn btn-dark"> Logout </a>
         </div>
-        <div class="row">
-            <div class="col-">
-                <a href="{% url 'my_logout' %}" class="btn btn-dark"> Logout </a>
-            </div>
-            <div class="col-2">
-                <a href="{% url 'person_list' %}" class="btn btn-info"> Seres </a>
-            </div>
-            {% else %}
-            <a href="{% url 'login' %}" class="btn btn-primary"> Login </a>
-            {% endif %}
+        <div class="col-2">
+          <a href="{% url 'person_list' %}" class="btn btn-info"> Seres </a>
         </div>
-     </div>
+        {% else %}
+          <a href="{% url 'login' %}" class="btn btn-primary"> Login </a>
+        {% endif %}
+      </div>
+    </div>
 
 
 {% endblock %}
